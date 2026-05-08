@@ -138,9 +138,10 @@ const QUESTIONS = [
 ];
 
 // ----- Racket database -----
-// Image URL convention: Tennis Warehouse uses /pics/{CODE}.jpg derived from product
-// description page codes. Codes marked (verified) come from confirmed descpage URLs;
-// others are best-guess and gracefully fall back to the SVG illustration via onerror.
+// Each racket has tiered media: a YouTube review video first, then any
+// unblocked image, with a final SVG illustration as the safety net.
+//   videoId — YouTube ID of an actual review (shows as click-to-play poster)
+//   image   — fallback image URL if YouTube thumbnail fails
 const RACKETS = [
     {
         id: 'pure-aero',
@@ -153,7 +154,7 @@ const RACKETS = [
         styles: ['baseline'],
         stringRec: 'Polyester (e.g., RPM Blast 17g) at 50–55 lbs for spin and durability',
         frame: '#e8d23a', accent: '#1a1a1a',
-        image: 'https://www.tennis-warehouse.com/pics/BARO.jpg',
+        videoId: 'yvXbYVTvYwY',
         purchase: 'https://www.tennis-warehouse.com/Babolat_Pure_Aero_2023/descpageRCBAB-BARO.html'
     },
     {
@@ -167,7 +168,7 @@ const RACKETS = [
         styles: ['baseline', 'allcourt'],
         stringRec: 'Multifilament (e.g., NRG2 16g) at 54–58 lbs to soften the frame',
         frame: '#1f6feb', accent: '#0a1530',
-        image: 'https://www.tennis-warehouse.com/pics/BPD.jpg',
+        videoId: 'IvY-eLEDxH4',
         purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Babolat+Pure+Drive'
     },
     {
@@ -181,7 +182,7 @@ const RACKETS = [
         styles: ['allcourt', 'net'],
         stringRec: 'Natural gut and polyester hybrid at 52–55 lbs for buttery feel',
         frame: '#1a1a1a', accent: '#9b1c1c',
-        image: 'https://www.tennis-warehouse.com/pics/W97V14.jpg',
+        videoId: 'Nxn3auU4NmA',
         purchase: 'https://www.tennis-warehouse.com/descpage-W97V14.html'
     },
     {
@@ -195,7 +196,7 @@ const RACKETS = [
         styles: ['allcourt', 'baseline'],
         stringRec: 'Multifilament or soft co-poly at 52–55 lbs for arm comfort and feel',
         frame: '#1f6f3a', accent: '#0c1a14',
-        image: 'https://www.tennis-warehouse.com/pics/WB9816.jpg',
+        videoId: 't4u6XFu44LY',
         purchase: 'https://www.tennis-warehouse.com/Wilson_Blade_98_16x19_v9/descpageRCWILSON-WB9816.html'
     },
     {
@@ -209,7 +210,7 @@ const RACKETS = [
         styles: ['allcourt', 'defensive'],
         stringRec: 'Multifilament (e.g., Wilson NXT 16g) at 50–55 lbs for plush response',
         frame: '#c0392b', accent: '#101820',
-        image: 'https://www.tennis-warehouse.com/pics/WC100V3.jpg',
+        videoId: 'NNlKjIe3FbY',
         purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Wilson+Clash+100+v3'
     },
     {
@@ -223,8 +224,8 @@ const RACKETS = [
         styles: ['allcourt', 'baseline', 'net'],
         stringRec: 'Hybrid: polyester mains and multifilament crosses at 52–55 lbs',
         frame: '#f1f1f1', accent: '#0e0e0e',
-        image: 'https://www.tennis-warehouse.com/pics/HSPMP.jpg',
-        purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Head+Speed+MP'
+        videoId: 'T2J4zLk4rcM',
+        purchase: 'https://www.tennis-warehouse.com/Head_Speed_MP_2024/descpageRCHEAD-HSPDM.html'
     },
     {
         id: 'ezone-100',
@@ -237,8 +238,8 @@ const RACKETS = [
         styles: ['baseline', 'allcourt'],
         stringRec: 'Soft co-poly (e.g., Poly Tour Pro 16g) at 48–52 lbs',
         frame: '#1ea7e6', accent: '#0c2c44',
-        image: 'https://www.tennis-warehouse.com/pics/EZ100.jpg',
-        purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Yonex+EZONE+100'
+        videoId: 'yuzDQ03BGjo',
+        purchase: 'https://www.tennis-warehouse.com/Yonex_EZONE_100_2025/descpageRCYONEX-EZ10BB.html'
     },
     {
         id: 'radical-mp',
@@ -251,8 +252,8 @@ const RACKETS = [
         styles: ['allcourt', 'net'],
         stringRec: 'Hybrid or full multifilament at 53–56 lbs for control and comfort',
         frame: '#e67e22', accent: '#101820',
-        image: 'https://www.tennis-warehouse.com/pics/HRADMP.jpg',
-        purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Head+Radical+MP'
+        videoId: 'r_JMB_xK9nU',
+        purchase: 'https://www.tennis-warehouse.com/Head_Radical_MP_2023/descpageRCHEAD-HMPR.html'
     },
     {
         id: 'boost-drive',
@@ -265,8 +266,8 @@ const RACKETS = [
         styles: ['baseline', 'defensive'],
         stringRec: 'Pre-strung synthetic gut at 55 lbs is fine; upgrade to multifilament when worn',
         frame: '#2980b9', accent: '#101820',
-        image: 'https://www.tennis-warehouse.com/pics/BBSTD.jpg',
-        purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Babolat+Boost+Drive'
+        videoId: 'uGHXLos_Sr4',
+        purchase: 'https://www.tennis-warehouse.com/Babolat_Boost_Drive/descpageRCBAB-BBSTDR.html'
     },
     {
         id: 'vcore-98',
@@ -279,7 +280,7 @@ const RACKETS = [
         styles: ['baseline', 'allcourt'],
         stringRec: 'Spin polyester (e.g., Poly Tour Spin 16g) at 50–54 lbs',
         frame: '#c0392b', accent: '#1a1a1a',
-        image: 'https://www.tennis-warehouse.com/pics/VC98.jpg',
+        videoId: 'XqncNIcdQuQ',
         purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Yonex+VCORE+98'
     },
     {
@@ -293,7 +294,7 @@ const RACKETS = [
         styles: ['baseline', 'allcourt'],
         stringRec: 'Multifilament at 54–58 lbs for power and control balance',
         frame: '#0a3a82', accent: '#e6e6e6',
-        image: 'https://www.tennis-warehouse.com/pics/WU100V4.jpg',
+        videoId: 'tCkj47Okxpo',
         purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Wilson+Ultra+100'
     },
     {
@@ -307,7 +308,7 @@ const RACKETS = [
         styles: ['allcourt', 'baseline'],
         stringRec: 'Co-poly main and multifilament cross at 52–55 lbs',
         frame: '#0e1730', accent: '#1ea7e6',
-        image: 'https://www.tennis-warehouse.com/pics/PRTOUR100.jpg',
+        videoId: '4P5_geUsZhI',
         purchase: 'https://www.tennis-warehouse.com/searchresults_c.html?kwc=Prince+Textreme+Tour+100'
     }
 ];
@@ -726,18 +727,13 @@ function renderResults() {
         const rankClass = i === 0 ? 'top' : '';
         const rankBadge = i === 0 ? 'Top recommendation' : (i === 1 ? 'Runner-up' : 'Third');
         const badgeClass = i === 0 ? '' : (i === 1 ? 'silver' : 'bronze');
-        const svgMarkup = racketSVG(r);
-        const svgDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(svgMarkup)}`;
 
         const card = document.createElement('div');
         card.className = `rec-card ${rankClass}`;
         card.innerHTML = `
-            <div class="rec-image">
+            <div class="rec-media">
                 <span class="rec-rank ${badgeClass}">${rankBadge}</span>
-                <img src="${r.image}" alt="${r.brand} ${r.name}" loading="lazy"
-                     data-fallback="${svgDataUri.replace(/"/g, '&quot;')}"
-                     onerror="this.onerror=null; this.src=this.dataset.fallback; this.parentNode.querySelector('.rec-illustration-note').style.display='block';">
-                <div class="rec-illustration-note" style="display:none;">An illustrated representation</div>
+                ${renderMedia(r)}
             </div>
             <div class="rec-body">
                 <div class="rec-brand">${r.brand}</div>
@@ -764,13 +760,78 @@ function renderResults() {
                 <div class="rec-actions">
                     <a class="primary" href="${r.purchase}" target="_blank" rel="noopener">View on Tennis Warehouse</a>
                     <a href="https://www.google.com/search?tbm=shop&amp;q=${encodeURIComponent(r.brand + ' ' + r.name)}" target="_blank" rel="noopener">Compare prices</a>
-                    <a href="https://www.google.com/search?tbm=isch&amp;q=${encodeURIComponent(r.brand + ' ' + r.name + ' tennis racket')}" target="_blank" rel="noopener">See photos</a>
                     <a href="https://www.google.com/search?q=${encodeURIComponent(r.brand + ' ' + r.name + ' review')}" target="_blank" rel="noopener">Read reviews</a>
                 </div>
             </div>
         `;
         container.appendChild(card);
     });
+
+    // Wire up lite-embed click-to-play handlers (mouse + keyboard).
+    container.querySelectorAll('.lite-yt').forEach(el => {
+        const trigger = () => activateVideo(el);
+        el.addEventListener('click', trigger);
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                trigger();
+            }
+        });
+    });
+}
+
+function renderMedia(r) {
+    const svgMarkup = racketSVG(r);
+    const svgDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(svgMarkup)}`;
+    const svgFallback = svgDataUri.replace(/"/g, '&quot;');
+
+    if (r.videoId) {
+        // YouTube lite-embed: show thumbnail with play button, swap to iframe on click.
+        // hqdefault.jpg is the most reliable YouTube thumbnail and is hotlink-friendly.
+        const thumb = `https://i.ytimg.com/vi/${r.videoId}/hqdefault.jpg`;
+        return `
+            <div class="lite-yt" data-video-id="${r.videoId}" role="button" tabindex="0"
+                 aria-label="Play review video for ${r.brand} ${r.name}">
+                <img class="lite-yt-thumb" src="${thumb}" alt="${r.brand} ${r.name} review thumbnail"
+                     loading="lazy"
+                     data-fallback="${svgFallback}"
+                     onerror="this.onerror=null; this.src=this.dataset.fallback; this.classList.add('is-svg');">
+                <span class="lite-yt-gradient"></span>
+                <button class="lite-yt-play" aria-label="Play video">
+                    <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+                        <path class="lite-yt-play-bg" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74 0.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/>
+                        <path d="M 45,24 27,14 27,34" fill="#fff"/>
+                    </svg>
+                </button>
+                <span class="lite-yt-label">Watch the review</span>
+            </div>
+        `;
+    }
+
+    // No video — show the SVG illustration directly.
+    return `
+        <div class="rec-illustration">
+            <img src="${svgDataUri}" alt="${r.brand} ${r.name} illustration" loading="lazy">
+            <div class="rec-illustration-note">An illustrated representation</div>
+        </div>
+    `;
+}
+
+function activateVideo(el) {
+    if (el.dataset.activated === '1') return;
+    el.dataset.activated = '1';
+    const id = el.dataset.videoId;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+    iframe.title = 'Racket review video';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.className = 'lite-yt-iframe';
+    // Replace contents but keep the badge if present (badge is a sibling of .lite-yt, not a child).
+    el.innerHTML = '';
+    el.appendChild(iframe);
+    el.classList.add('is-playing');
 }
 
 // ----- Event wiring -----

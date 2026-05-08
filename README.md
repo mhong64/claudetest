@@ -30,11 +30,15 @@ python3 -m http.server 8765
    - Hard penalty for over-budget rackets
 4. **Short-list** — top three above a viability threshold, presented with brand mark, illustration or photo, match percentage, specs, tailored string-and-tension advice, and links to Tennis Warehouse, Google Shopping, photos and reviews.
 
-## Images
+## Media (tiered)
 
-Each racket card attempts to load a real product photo from Tennis Warehouse first (`/pics/[CODE].jpg`). If that URL fails, an `onerror` handler swaps in a refined SVG illustration generated on the fly — frame gradient matched to the brand, leather-style grip with stitching, scaled head size, drop shadow.
+Each racket card shows a click-to-play YouTube review video as the primary visual. The implementation uses a *lite-embed* pattern — a thumbnail with a Wimbledon-green play button overlays a single image until the user clicks, at which point an `<iframe>` is swapped in and the video autoplays. This keeps the page fast (no iframes loaded up front) and the YouTube `i.ytimg.com` thumbnail CDN is hotlink-friendly so it loads reliably.
 
-To add a new racket image, set `image:` to a working URL on the entry in `RACKETS` in `app.js`. The fallback SVG runs automatically.
+Tier cascade per card:
+1. **YouTube review** (set `videoId` on the racket) — lite-embed poster, click to play.
+2. **SVG illustration** — refined hand-drawn-feel render generated on the fly. Used if the thumbnail fails to load (`onerror`) or no `videoId` is set.
+
+To swap a video, change the racket’s `videoId` in `app.js` to a different YouTube ID. To remove video and show only the SVG illustration, set `videoId: null`.
 
 ## Files
 
