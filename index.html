@@ -3,46 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tennis Racket Finder</title>
+    <title>The Racket — A Bespoke Tennis Racket Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>">
 </head>
 <body>
     <div class="app">
         <header class="header">
-            <h1>🎾 Tennis Racket Finder</h1>
-            <p class="subtitle">Answer a few questions to find your perfect racket setup</p>
+            <div class="crest">
+                <div class="crest-line"></div>
+                <span class="crest-mark">Est. Centre Court</span>
+                <div class="crest-line"></div>
+            </div>
+            <h1 class="brand-title">The Racket</h1>
+            <p class="brand-tagline">A bespoke tennis racket consultation</p>
         </header>
 
         <main id="main">
             <!-- Welcome screen -->
             <section id="welcome" class="screen active">
-                <div class="welcome-card">
-                    <h2>Find your ideal racket</h2>
-                    <p>This quick quiz analyzes your skill level, play style, physique, and preferences to recommend a tennis racket — including head size, weight, balance, string type, and tension that match your game.</p>
-                    <ul class="welcome-features">
-                        <li>📋 12 quick questions</li>
-                        <li>🎯 Personalized matching</li>
-                        <li>🛒 Direct purchase links</li>
-                        <li>🎻 String &amp; tension advice</li>
-                    </ul>
-                    <button class="btn btn-primary btn-large" id="startBtn">Start Quiz</button>
-                </div>
+                <article class="welcome-card">
+                    <p class="overline">A private fitting</p>
+                    <h2 class="display-title">Find the racket worthy of your game.</h2>
+                    <p class="lede">Twelve considered questions on your skill, style, physique and history — and you’ll receive a curated short‑list of frames, with strings, tension and links to acquire them.</p>
+                    <div class="welcome-meta">
+                        <div class="meta-pill"><span class="meta-num">12</span><span class="meta-lbl">Questions</span></div>
+                        <div class="meta-pill"><span class="meta-num">12</span><span class="meta-lbl">Frames</span></div>
+                        <div class="meta-pill"><span class="meta-num">3</span><span class="meta-lbl">Picks</span></div>
+                    </div>
+                    <button class="btn btn-primary btn-large" id="startBtn">Begin Consultation</button>
+                    <p class="footnote">Approximately three minutes.</p>
+                </article>
             </section>
 
             <!-- Quiz screen -->
             <section id="quiz" class="screen">
                 <div class="progress-wrap">
+                    <div class="progress-meta">
+                        <span class="progress-label" id="progressText">I.</span>
+                        <span class="progress-divider"></span>
+                        <span class="progress-of">of XII</span>
+                    </div>
                     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                    <div class="progress-text" id="progressText">Question 1 of 12</div>
                 </div>
-                <div class="question-card">
+                <article class="question-card">
+                    <p class="overline" id="questionStep">Question</p>
                     <h2 class="question-title" id="questionTitle"></h2>
                     <p class="question-help" id="questionHelp"></p>
                     <div class="options" id="options"></div>
-                </div>
+                </article>
                 <div class="quiz-nav">
-                    <button class="btn btn-secondary" id="backBtn">← Back</button>
+                    <button class="btn btn-text" id="backBtn">← Previous</button>
                     <button class="btn btn-primary" id="nextBtn" disabled>Next →</button>
                 </div>
             </section>
@@ -50,18 +64,20 @@
             <!-- Results screen -->
             <section id="results" class="screen">
                 <div class="results-header">
-                    <h2>Your Recommendations</h2>
-                    <p id="resultsSummary"></p>
+                    <p class="overline">Your shortlist</p>
+                    <h2 class="display-title">Curated for your game.</h2>
+                    <p class="lede" id="resultsSummary"></p>
                 </div>
                 <div id="recommendations" class="recommendations"></div>
                 <div class="results-actions">
-                    <button class="btn btn-secondary" id="retakeBtn">↻ Retake Quiz</button>
+                    <button class="btn btn-text" id="retakeBtn">↻ Retake the consultation</button>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <p>Recommendations are educational. Demo your top picks before buying when possible.</p>
+            <div class="footer-line"></div>
+            <p>A racket is personal. Hit before you commit when possible.</p>
         </footer>
     </div>
 
