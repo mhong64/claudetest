@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Racket Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>🎾 Tennis Racket Finder</h1>
+            <p class="subtitle">Answer a few questions to find your perfect racket setup</p>
+        </header>
+
+        <main id="main">
+            <!-- Welcome screen -->
+            <section id="welcome" class="screen active">
+                <div class="welcome-card">
+                    <h2>Find your ideal racket</h2>
+                    <p>This quick quiz analyzes your skill level, play style, physique, and preferences to recommend a tennis racket — including head size, weight, balance, string type, and tension that match your game.</p>
+                    <ul class="welcome-features">
+                        <li>📋 12 quick questions</li>
+                        <li>🎯 Personalized matching</li>
+                        <li>🛒 Direct purchase links</li>
+                        <li>🎻 String &amp; tension advice</li>
+                    </ul>
+                    <button class="btn btn-primary btn-large" id="startBtn">Start Quiz</button>
+                </div>
+            </section>
+
+            <!-- Quiz screen -->
+            <section id="quiz" class="screen">
+                <div class="progress-wrap">
+                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                    <div class="progress-text" id="progressText">Question 1 of 12</div>
+                </div>
+                <div class="question-card">
+                    <h2 class="question-title" id="questionTitle"></h2>
+                    <p class="question-help" id="questionHelp"></p>
+                    <div class="options" id="options"></div>
+                </div>
+                <div class="quiz-nav">
+                    <button class="btn btn-secondary" id="backBtn">← Back</button>
+                    <button class="btn btn-primary" id="nextBtn" disabled>Next →</button>
+                </div>
+            </section>
+
+            <!-- Results screen -->
+            <section id="results" class="screen">
+                <div class="results-header">
+                    <h2>Your Recommendations</h2>
+                    <p id="resultsSummary"></p>
+                </div>
+                <div id="recommendations" class="recommendations"></div>
+                <div class="results-actions">
+                    <button class="btn btn-secondary" id="retakeBtn">↻ Retake Quiz</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Recommendations are educational. Demo your top picks before buying when possible.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
